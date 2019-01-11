@@ -8,11 +8,11 @@
 
 - [ ] Describe a Resource?
 
-    - 
+    - Anything on your system that you want to manage.
 
 - [ ] What can the API return to help clients know if a request was successful?
 
-    - An API can return Error codes that can help clients know what the issue with their request is.
+    - An API can return status codes that can help clients know what the issue with their request is.
 
 - [ ] How can we partition our application into sub-applications?
 
