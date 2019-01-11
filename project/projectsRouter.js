@@ -2,7 +2,7 @@ const express = require('express');
 const projectDB = require('../data/helpers/projectModel.js');
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/projects', (req, res) => {
     projectDB.get()
         .then(projects => {
             res.status(200).json({ projects });
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
         });
 });
 
-router.get('/:id', (req, res) => {
+router.get('/projects/:id', (req, res) => {
     const id = req.params.id;
 
     projectDB.get(id)
@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
-router.get('/:id/actions', (req, res) => {
+router.get('/projects/:id/actions', (req, res) => {
     const id = req.params.id;
 
     projectDB.getProjectActions(id)
@@ -40,7 +40,7 @@ router.get('/:id/actions', (req, res) => {
         });
 })
 
-router.post('/', (req, res) => {
+router.post('/projects', (req, res) => {
     const { name, description, completed } = req.body;
 
     if(name.length >= 1 && name.length <= 128 && description) {
@@ -56,7 +56,7 @@ router.post('/', (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/projects/:id', (req, res) => {
     const id = req.params.id;
     const { name, description } = req.body;
 
@@ -73,7 +73,7 @@ router.put('/:id', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/projects/:id', (req, res) => {
     const id = req.params.id;
 
     projectDB.remove(id)

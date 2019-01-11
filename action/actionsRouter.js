@@ -4,7 +4,7 @@ const actionDB = require('../data/helpers/actionModel.js');
 const router = express.Router();
 
 // get all action
-router.get('/', (req, res) => {
+router.get('/projects/actions', (req, res) => {
     actionDB.get()
         .then( actions => {
             res.status(200).json({ actions });
@@ -15,12 +15,12 @@ router.get('/', (req, res) => {
 });
 
 // get action by id
-router.get('/:id', (req, res) => {
+router.get('/projects/actions/:id', (req, res) => {
     const id = req.params.id;
 
     actionDB.get(id)
         .then(action => {
-            if(!action) {
+            if(action) {
                 res.status(200).json({ action });
             } else {
                 res.status(404).json({ error: 'Specified Action ID could not be found' });
@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
         });
 });
 
-router.post('/', (req, res) => {
+router.post('/projects/actions', (req, res) => {
     const { project_id, description, notes, completed } = req.body;
     
     if(project_id && description.length <= 128 && description.length >= 1 && notes) {
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
+router.put('/projects/actions/:id', (req, res) => {
     const id = req.params.id;
     const { description, notes, completed } = req.body;
 
@@ -64,7 +64,7 @@ router.put('/:id', (req, res) => {
     }
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/projects/actions/:id', (req, res) => {
     const id = req.params.id;
 
     if(id) {

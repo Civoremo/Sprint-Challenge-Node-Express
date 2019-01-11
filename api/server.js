@@ -7,8 +7,8 @@ const projectsRouter = require('../project/projectsRouter.js');
 const server = express();
 configMiddleware(server);
 
-server.use('/projects/actions', actionsRouter);
-server.use('/projects', projectsRouter);
+server.use( actionsRouter);
+server.use( projectsRouter);
 
 
 server.get('/', (req, res) => {
