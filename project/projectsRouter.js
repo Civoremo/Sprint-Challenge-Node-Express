@@ -24,6 +24,22 @@ router.get('/:id', (req, res) => {
         });
 });
 
+router.get('/:id/actions', (req, res) => {
+    const id = req.params.id;
+
+    projectDB.getProjectActions(id)
+        .then(actions => {
+            if(actions.length !== 0) {
+                res.status(200).json({ actions });
+            } else {
+                res.status(401).json({ message: 'Project has no actions' });
+            }
+        })
+        .catch(err => {
+            res.status(500).json({ error: 'Server error, try again' });
+        });
+})
+
 router.post('/', (req, res) => {
     const { name, description, completed } = req.body;
 
