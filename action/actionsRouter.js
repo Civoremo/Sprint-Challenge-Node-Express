@@ -20,17 +20,21 @@ router.get('/:id', (req, res) => {
 
     actionDB.get(id)
         .then(action => {
-            res.status(200).json({ action });
+            if(!action) {
+                res.status(200).json({ action });
+            } else {
+                res.status(404).json({ error: 'Specified Action ID could not be found' });
+            }
         })
         .catch(err => {
-            res.status(404).json({ error: 'Action by that ID could not be found.' });
+            res.status(404).json({ error: 'Error performing that action' });
         });
 });
 
 router.post('/', (req, res) => {
     const { project_id, description, notes, completed } = req.body;
     
-    if(project_id && description && notes) {
+    if(project_id && description.length <= 128 && description.length >= 1 && notes) {
         actionDB.insert(req.body)
             .then(result => {
                 res.status(201).json({ result });
