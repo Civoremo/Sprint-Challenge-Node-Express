@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchProjects } from '../store/actions';
+import { fetchProjects, fetchOneProject, removeProject } from '../store/actions';
 import styled from 'styled-components';
 
 // styled-components
@@ -58,9 +58,23 @@ class projectsList extends Component {
         this.state = {}
     }
 
+    
+    componentDidUpdate (prevState) {
+        if(this.props.projects !== prevState.projects) {
+            if(!this.props.deletingProject) {
+                // this.props.fetchProjects();
+            }
+        }
+    }
+
     componentDidMount() {
         this.props.fetchProjects();
     }
+
+    deleteProject = id => {
+        this.props.removeProject(id);
+    }
+
 
     render () {
         return (
@@ -78,7 +92,7 @@ class projectsList extends Component {
                                 <Button>view</Button>
                                 <Button>complete</Button>
                                 <Button>edit</Button>
-                                <Button>remove</Button>
+                                <Button onClick={() => this.deleteProject(project.id)}>remove</Button>
                             </ButtonContainer>
                         </ProjectContainer>
                     );
@@ -91,10 +105,12 @@ class projectsList extends Component {
 const mapStateToProps = state => {
     return {
         projects: state.projects,
+        fetchingProjects: state.fetchingProjects, // bool
+        deletingProject: state.removingProject, // bool
     };
 }
 
 export default connect(
     mapStateToProps,
-    { fetchProjects }
+    { fetchProjects, fetchOneProject, removeProject }
 ) (projectsList);

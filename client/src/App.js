@@ -43,6 +43,27 @@ const NavLogo = styled.div`
   }
 `;
 
+const NavAddPost = styled.div`
+  background-color: #ffffff;
+  color: #222222;
+  font-weight: bolder;
+  font-size: 1.6rem;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+
+    :hover {
+      background-color: #222222;
+      border: 1px solid #ffffff;
+      cursor: pointer;
+      color: #ffffff;
+    }
+`;
+
 const ComponentContainer = styled.div`
   width: 750px;
   min-width: 750px;
@@ -65,13 +86,14 @@ class App extends Component {
         <NavContainer>
           <NavBar>
             <NavLogo>
-              <i className="fas fa-bars"></i>
+              {/* <i className="fas fa-bars"></i> */}
             </NavLogo>
             <NavIcons>
               Projects App
             </NavIcons>
-            <NavIcons>
-            </NavIcons>
+            <NavAddPost>
+              +
+            </NavAddPost>
           </NavBar>
         </NavContainer>
 
