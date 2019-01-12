@@ -22,7 +22,7 @@ export default (state = initialState, action) => {
                 ...state,
                 fetchingProjects: false,
                 error: null,
-                // projects: action.payload,
+                projects: action.payload,
             };
         case FETCH_PROJECTS_FAILURE:
             return {

@@ -10,11 +10,11 @@ export const fetchProjects = () => dispatch => {
     dispatch({ type: FETCH_PROJECTS_START });
     axios({
         method: 'get',
-        url: `${baseURL}`,
+        url: `${baseURL}/projects`,
     })
-    .then(projects => {
-        console.log(projects);
-        // dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: projects });
+    .then(result => {
+        // console.log(result.data.projects);
+        dispatch({ type: FETCH_PROJECTS_SUCCESS, payload: result.data.projects });
     })
     .catch(err => {
         dispatch({ type: FETCH_PROJECTS_FAILURE, payload: err });

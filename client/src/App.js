@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
 import styled, { css } from 'styled-components';
 
+import ProjectsList from './components/projectsList';
+
 // styled components
 const MainBody = styled.div`
   text-align: center;
   font-weight: bold;
+  /* border: 1px solid red; */
 `;
 
 const NavContainer = styled.div`
@@ -40,6 +43,15 @@ const NavLogo = styled.div`
   }
 `;
 
+const ComponentContainer = styled.div`
+  width: 750px;
+  min-width: 750px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 30px;
+  /* border: 1px solid blue; */
+`;
 
 
 // Application
@@ -47,10 +59,12 @@ class App extends Component {
   render() {
     return (
       <MainBody>
+
+        {/* navigation bar */}
         <NavContainer>
           <NavBar>
             <NavLogo>
-              <i class="fas fa-bars"></i>
+              <i className="fas fa-bars"></i>
             </NavLogo>
             <NavIcons>
               Projects App
@@ -59,7 +73,12 @@ class App extends Component {
             </NavIcons>
           </NavBar>
         </NavContainer>
-        under construction
+
+        {/* components */}
+        <ComponentContainer>
+          <ProjectsList />
+        </ComponentContainer>
+        
       </MainBody>
     );
   }
