@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 import ProjectsList from './components/projectsList';
 
@@ -74,7 +74,6 @@ const ComponentContainer = styled.div`
   font-weight: 500;
   /* border: 1px solid blue; */
 `;
-
 
 // Application
 class App extends Component {
