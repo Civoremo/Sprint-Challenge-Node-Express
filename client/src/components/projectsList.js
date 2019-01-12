@@ -14,9 +14,9 @@ const MainContainer = styled.div`
 const ProjectContainer = styled.div`
     border: 1px solid lightgray;
     width: 300px;
-    height: 150px;
+    height: 200px;
     margin: 20px 20px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 10px 10px;
 `;
 
@@ -24,7 +24,33 @@ const ProjectTitle = styled.div`
     margin: 20px 0;
     padding-bottom: 5px;
     border-bottom: 1px solid lightgray;
+    font-weight: bold;
 `;
+
+const ProjectDescription = styled.div`
+    margin-bottom: 10px;
+    height: 70px;
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+    border-radius: 10px;
+    padding: 10px 10px;
+    background-color: rgb(230, 230, 230);
+    /* border: 1px solid blue; */
+`;
+
+const Button = styled.button`
+
+    :hover {
+        cursor: pointer;
+    }
+`;
+
+const ButtonContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+`;
+
+
 
 class projectsList extends Component {
     constructor() {
@@ -45,9 +71,15 @@ class projectsList extends Component {
                             <ProjectTitle>
                                 {project.name}
                             </ProjectTitle>
-                            <div>
+                            <ProjectDescription>
                                 {project.description}
-                            </div>
+                            </ProjectDescription>
+                            <ButtonContainer>
+                                <Button>view</Button>
+                                <Button>complete</Button>
+                                <Button>edit</Button>
+                                <Button>remove</Button>
+                            </ButtonContainer>
                         </ProjectContainer>
                     );
                 })}

@@ -50,6 +50,7 @@ const ComponentContainer = styled.div`
   justify-content: center;
   margin: 0 auto;
   margin-top: 30px;
+  font-weight: 500;
   /* border: 1px solid blue; */
 `;
 
