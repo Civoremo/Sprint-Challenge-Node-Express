@@ -12,10 +12,10 @@ configMiddleware(server);
 server.use( actionsRouter);
 server.use( projectsRouter);
 
-server.use(express.static(path.join(__dirname, 'client/build')));
+server.use(express.static(path.join(__dirname, 'client/public')));
 
 server.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+    res.sendFile(path.join(__dirname+'/client/public/index.html'));
 });
 
 // server.get('/', (req, res) => {
