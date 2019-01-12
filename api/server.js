@@ -5,7 +5,7 @@ const actionsRouter = require('../action/actionsRouter.js');
 const projectsRouter = require('../project/projectsRouter.js');
 
 const path = require('path'); // heroku
-server.use(express.static(path.join(_dirname, 'client/build'))); // heroku
+server.use(express.static(path.join(__dirname, 'client/build'))); // heroku
 
 const server = express();
 configMiddleware(server);
@@ -20,7 +20,7 @@ server.use( projectsRouter);
 
 
 server.get('*', (req, res) => {
-    res.sendFile(path.join(_dirname + '/client/build/index.html'));
+    res.sendFile(path.join(__dirname + '/client/build/index.html'));
 });
 
 
