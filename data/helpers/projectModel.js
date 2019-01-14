@@ -16,6 +16,18 @@ module.exports = {
 
         return mappers.projectToBody(project);
       });
+
+      // return Promise.all(promises).then(function(results) {
+			// 	let [project, actions] = results;
+
+			// 	if (!project) {
+			// 		return null;
+			// 	} else {
+			// 		project.actions = actions;
+
+			// 		return mappers.projectToBody(project);
+			// 	}
+			// });
     }
 
     return query.then(projects => {
